@@ -1,0 +1,41 @@
+body {
+    background-color: rgb(8, 63, 8);
+}
+header {
+    background-color: darkred;
+}
+.menu {
+    width: auto;
+    color: yellow;
+}
+.stat-bar {
+    background-color: black;
+    color: red;
+}
+.hero-section {
+    background: url("https://ewscripps.brightspotcdn.com/dims4/default/26a16d0/2147483647/strip/true/crop/1280x720+0+0/resize/1280x720!/quality/90/?url=http%3A%2F%2Fewscripps-brightspot.s3.amazonaws.com%2F3f%2F1d%2F3d911b8a47088beaf348069c550b%2Fcoronavirus-background-1280x720-1.jpg") 50% no-repeat;
+    background-size: cover;
+    height: 60vh;
+    text-align: center;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+.hero-section .hero-section-text {
+    color: #fefefe;
+    text-shadow: 1px 1px 2px #0a0a0a;
+}
+.button {
+    border-radius: 50%;
+}
+#buttonDiv {
+    display: flex;
+    align-items: center;
+}
+  
