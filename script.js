@@ -14,9 +14,6 @@ $.ajax({
 });
 
 
-
-
-
 //https://api.covidtracking.com
 
 var queryURL = "https://api.covidtracking.com/v1/states/current.json"
@@ -28,15 +25,20 @@ $.ajax({
 
 for (var i = 0; i < 56; i++){
 
-    console.log(response2[i].state)
-    console.log(response2[i].total)
+    // console.log(response2)
+    var positive = (response2[i].positive)
+    var positiveNeg = (response2[i].posNeg)
+    var states = (response2[i].state)
+    var total = (response2[i].total)
+console.log(response2[i].state)
+    console.log(((positive/ positiveNeg )* 100).toFixed(2));
+    };   
 
-    // console.log($("option").val())
-}
 });
 
 
 
+   
 
 
 // Math.floor(response[1].);
