@@ -16,10 +16,24 @@ $(document).foundation();
 
 //https://api.covidtracking.com
 
-// var queryURL = "https://api.covidtracking.com/v1/states/current.json"
-// $.ajax({
-//     url: queryURL,
-//     method: "GET"
-// }).then(function (response2) {
-//     console.log(response2)
-// });
+var queryURL = "https://api.covidtracking.com/v1/states/current.json"
+$.ajax({
+    url: queryURL,
+    method: "GET"
+}).then(function (response2) {
+    console.log(response2)
+
+for (var i = 0; i < 56; i++){
+
+    console.log(response2[i].state)
+    console.log(response2[i].total)
+
+    // console.log($("option").val())
+}
+});
+
+
+
+
+
+// Math.floor(response[1].);
