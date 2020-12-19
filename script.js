@@ -73,11 +73,21 @@ $("#battle").on("click", function () {
 
 
 var currentDate = moment().format('dddd, MMMM Do, YYYY');
-console.log(currentDate);
+// console.log(currentDate);
 $("#currentDate").text(currentDate)
 
 
 
-
-
+// Click listener to display states in card
+$("#states2").on("click", function(event) {
+    var state = event.target.value
+    $("#stImg2").attr({"type": "image/svg", "src": "images/" + state + ".svg",  "width": "300", "height": "200",
+    "alt": state})
+})
+$("#states1").on("click", function(event) {
+    var state = event.target.value
+    $("#stImg1").attr({"type": "image/svg", "src": "images/" + state + ".svg",  "width": "300", "height": "200",
+    "alt": state})
+})
+{/* <img type="image/svg" src="" width="300" height="200"> */}
 // Math.floor(response[1].);
