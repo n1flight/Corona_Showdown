@@ -26,13 +26,13 @@ $("#battle").on("click", function () {
         // console.log(response2)
         const userState1 = $("#states1").val()
         const userState2 = $("#states2").val()
-        var result1 = getRating1(userState1)
-        var result2 = getRating2(userState2)
+        var result1 = parseFloat(getRating1(userState1))
+        var result2 = parseFloat(getRating2(userState2))
         console.log(userState1)
         console.log(result1)
         console.log(userState2)
         console.log(result2)
-        function getRating1(state) {     
+        function getRating1(state) {
             var resulting = 0
             for (var i = 0; i < 56; i++) {
                 if (response2[i].state === state) {
@@ -43,23 +43,41 @@ $("#battle").on("click", function () {
             };
             return resulting
         }
-        function getRating2(state) {     
+        function getRating2(state) {
             var resulting = 0
             for (var i = 0; i < 56; i++) {
                 if (response2[i].state === state) {
                     var positive = (response2[i].positive)
                     var positiveNeg = (response2[i].posNeg)
                     resulting = ((positive / positiveNeg) * 100).toFixed(2)
+
                 }
             };
             return resulting
+
+        }
+
+        if (userState1 === userState2) {
+            console.log("Choose two DIFFERENT states...")
+        } else if (result1 > result2) {
+            console.log(userState2 + " wins!");
+        } else if (result1 < result2) {
+            console.log(userState1 + " wins!");
+        }
+        else {
+            console.log("It's a tie!");
         }
     });
 })
 
 
 
-   
+var currentDate = moment().format('dddd, MMMM Do, YYYY');
+console.log(currentDate);
+$("#currentDate").text(currentDate)
+
+
+
 
 
 // Math.floor(response[1].);
