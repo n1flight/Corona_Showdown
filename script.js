@@ -79,12 +79,14 @@ $("#currentDate").text(currentDate)
 
 
 // Click listener to display states in card
-$("#states2").on("click", function(event) {
+$("#states2").on("change", function(event) {
     var state = event.target.value
+    console.log(state, "right")
     $("#stImg2").attr({"type": "image/svg", "src": "images/" + state + ".svg",  "alt": state})
 })
-$("#states1").on("click", function(event) {
+$("#states1").on("change", function(event) {
     var state = event.target.value
+    console.log(state, "left")
     $("#stImg1").attr({"type": "image/svg", "src": "images/" + state + ".svg", "alt": state})
 })
 {/* <img type="image/svg" src="" width="300" height="200"> */}
