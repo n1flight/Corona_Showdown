@@ -7,6 +7,7 @@
     <title>Coronavirus Stats</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
         integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,7 +15,8 @@
     <div class="row">
         <div class="hero-section">
             <div class="hero-section-text">
-                <h1 class="text-center"><i class="fas fa-biohazard"></i>Corona Showdown<i class="fas fa-biohazard"></i>
+                <h1 class="animate__animated animate__rubberBand animate__slower 5s text-center"><i class="fas
+                    fa-biohazard"></i>Corona Showdown<i class="fas fa-biohazard"></i>
                 </h1>
                 <h5 id="currentDate"></h5>
             </div>
@@ -22,7 +24,7 @@
         <header>
             <ul class="dropdown menu" id="news-dropdown" data-dropdown-menu>
                 <li>
-                    <h3>Coronavirus News</h3>
+                    <h3 id="news">Coronavirus News</h3>
                     <ul class="menu">
                         <li><a href="#">Item 1</a></li>
                         <li><a href="#">Item 2</a></li>
@@ -36,12 +38,56 @@
     <div class="grid-x grid-padding-x align-spaced stat-bar">
         <h3 class="text-center">World-Wide Statistics</h3>
     </div>
-    <div class="grid-x grid-padding-x align-spaced stat-bar">
-        <div class="cell small-4" id="gTotal">Total Cases</div>
-        <div class="cell small-4" id="gNew">New Cases</div>
-        <div class="cell small-4" id="gRecovered">Recovered</div>
+
+    <div class="tcontainer">
+        <div class="ticker-wrap">
+            <div class="ticker-move">
+                <div class="ticker-item1"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item2"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item3"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+                <div class="ticker-item-space"></div>
+
+            </div>
+        </div>
     </div>
-    <br>
+
     <div class="grid-x grid-padding-x align-spaced">
         <div class="medium-4 cell ">
             <div class="card">
@@ -109,8 +155,9 @@
                 </div>
                 <img id="stImg1" src="images/AL.svg" alt="State Image">
                 <div class="card-section">
-                    <h4>This is a card.</h4>
-                    <p>It has an easy to override visual style, and is appropriately subdued.</p>
+                    <h4 id="leftStatePosRate"></h4>
+                    <p id="state-card-left">
+                    </p>
                 </div>
             </div>
         </div>
@@ -185,8 +232,9 @@
                 </div>
                 <img id="stImg2" src="images/AL.svg" alt="State Image">
                 <div class="card-section">
-                    <h4>This is a card.</h4>
-                    <p>It has an easy to override visual style, and is appropriately subdued.</p>
+                    <h4 id="rightStatePosRate"></h4>
+                    <p id="state-card-right">
+                    </p>
                 </div>
             </div>
         </div>
