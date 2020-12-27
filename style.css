@@ -134,4 +134,21 @@ h1{
       margin-top: 50px;
       margin-bottom: 50px;
   }
-  
+  .colorize-pink {
+    filter: brightness(0.3) sepia(1) hue-rotate(-70deg) saturate(5);
+    background-color: white;
+  }
+  .colorize-blue {
+    filter: brightness(0.3) sepia(1) hue-rotate(140deg) saturate(6);
+    background-color: white;
+  }
+  .reveal{
+    color: gray;
+    font-weight: 700;
+    height: auto;
+    border-style: none;
+    background-color: green;
+    text-align: center;
+    border: 5px solid gray;
+    font-family: 'Black Ops One', cursive;
+ }

@@ -110,14 +110,18 @@ $(document).ready(function () {
             }
 
             if (userState1 === userState2) {
-                console.log("Choose two DIFFERENT states...")
+                $("#modal-text").text("Choose two DIFFERENT states...")
             } else if (result1 > result2) {
-                console.log(userState2 + " wins!");
+                $("#modal-text").text(userState2 + " wins!");
+                $("#stImg2").attr("class", "colorize-blue")
+                $("#stImg1").attr("class", "colorize-pink")
             } else if (result1 < result2) {
-                console.log(userState1 + " wins!");
+                $("#modal-text").text(userState1 + " wins!");
+                $("#stImg1").attr("class", "colorize-blue")
+                $("#stImg2").attr("class", "colorize-pink")
             }
             else {
-                console.log("It's a tie!");
+                $("#modal-text").text("It's a tie!");
             }
         });
     })
@@ -134,11 +138,17 @@ $(document).ready(function () {
     $("#states2").on("change", function (event) {
         var state = event.target.value
         console.log(state, "right")
+        $("#rightStatePosRate").text("")
+        $("#state-card-right").text("")
+        $("#stImg2").removeAttr("class")
         $("#stImg2").attr({ "type": "image/svg", "src": "images/" + state + ".svg", "alt": state })
     })
     $("#states1").on("change", function (event) {
         var state = event.target.value
         console.log(state, "left")
+        $("#leftStatePosRate").text("")
+        $("#state-card-left").text("")
+        $("#stImg1").removeAttr("class")
         $("#stImg1").attr({ "type": "image/svg", "src": "images/" + state + ".svg", "alt": state })
     })
     {/* <img type="image/svg" src="" width="300" height="200"> */ }
