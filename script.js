@@ -155,21 +155,21 @@ $.ajax({
 }).then(function(response) {
 
     console.log(response)
-    var link1 = response.response.docs[0].web_url
-    var link2 = response.response.docs[1].web_url
-    var link3 = response.response.docs[2].web_url
-    var link4 = response.response.docs[3].web_url
+    var link1 = response.response.docs[0]
+    var link2 = response.response.docs[1]
+    var link3 = response.response.docs[2]
+    var link4 = response.response.docs[3]
     console.log(link1)
     console.log(link2)
     console.log(link3)
     console.log(link4)
 
-    $('#link1').append('<a href="' + link1 + '">Random article 1</a>');
-    $('#link1').append('<a href="' + link2 + '">Random article 2</a>');
-    $('#link1').append('<a href="' + link3 + '">Random article 3</a>');
-    $('#link1').append('<a href="' + link4 + '">Random article 4</a>'); 
+    $('#link1').append("<a href=" + link1.web_url + ">" + link1.headline.main + "</a>");
+    $('#link1').append("<a href=" + link2.web_url + ">" + link2.headline.main + "</a>");
+    $('#link1').append("<a href=" + link3.web_url + ">" + link3.headline.main + "</a>");
+    $('#link1').append("<a href=" + link4.web_url + ">" + link4.headline.main + "</a>");
     
-
+    // $('#link1').text(response.)
    
     
     
