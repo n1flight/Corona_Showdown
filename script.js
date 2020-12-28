@@ -155,3 +155,32 @@ $(document).ready(function () {
     // Math.floor(response[1].);
 
 })
+
+
+// Covid news links
+var queryURL2 = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=Covid&api-key=WbAAM3rxTCRiSJsmekEsFKXaDF8DceLA"
+$.ajax({
+    url: queryURL2,
+    method: "GET"
+}).then(function(response) {
+
+    console.log(response)
+    var link1 = response.response.docs[0]
+    var link2 = response.response.docs[1]
+    var link3 = response.response.docs[2]
+    var link4 = response.response.docs[3]
+    console.log(link1)
+    console.log(link2)
+    console.log(link3)
+    console.log(link4)
+
+    $('#link1').append("<a href=" + link1.web_url + ">" + link1.headline.main + "</a>");
+    $('#link1').append("<a href=" + link2.web_url + ">" + link2.headline.main + "</a>");
+    $('#link1').append("<a href=" + link3.web_url + ">" + link3.headline.main + "</a>");
+    $('#link1').append("<a href=" + link4.web_url + ">" + link4.headline.main + "</a>");
+    
+    // $('#link1').text(response.)
+   
+    
+    
+})
