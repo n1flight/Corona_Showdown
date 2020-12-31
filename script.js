@@ -1,6 +1,8 @@
 $(document).ready(function () {
 
     $(document).foundation();
+    // set variable for local storage
+    var stateWinLoss = JSON.parse(localStorage.getItem("stateWL")) || [];
 
     // https://corona.lmao.ninja/docs/#/COVID-19%3A%20Worldometers/get_v3_covid_19_countries
 
@@ -9,22 +11,22 @@ $(document).ready(function () {
         url: queryURL,
         method: "GET"
     }).then(function (response1) {
-        // console.log(response1)
-        $(".ticker-item1").text("Total Cases: " + response1.cases);
+        console.log(response1)
+        $(".ticker-item1").text("Total Cases: " + response1.cases.toLocaleString());
         $(".ticker-item-space").text("");
         $(".ticker-item-space").text("");
         $(".ticker-item-space").text("");
         $(".ticker-item-space").text("");
         $(".ticker-item-space").text("");
         $(".ticker-item-space").text("");
-        $(".ticker-item2").text("New Cases: " + response1.todayCases);
+        $(".ticker-item2").text("New Cases: " + response1.todayCases.toLocaleString());
         $(".ticker-item-space").text("");
         $(".ticker-item-space").text("");
         $(".ticker-item-space").text("");
         $(".ticker-item-space").text("");
         $(".ticker-item-space").text("");
         $(".ticker-item-space").text("");
-        $(".ticker-item3").text("Recovered: " + response1.recovered);
+        $(".ticker-item3").text("Recovered: " + response1.recovered.toLocaleString());
         $(".ticker-item-space").text("");
         $(".ticker-item-space").text("");
         $(".ticker-item-space").text("");
@@ -61,6 +63,7 @@ $(document).ready(function () {
     var queryURL = "https://api.covidtracking.com/v1/states/current.json"
 
     $("#battle").on("click", function () {
+        
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -84,8 +87,8 @@ $(document).ready(function () {
 
 
                         $("#leftStatePosRate").html("Positivity Rate: " + ((positive / positiveNeg) * 100).toFixed(2) + "%")
-                        $("#state-card-left").html("Total cases: " + response2[i].total + "<br>"
-                            + "Deaths: " + response2[i].death)
+                        $("#state-card-left").html("Total cases: " + response2[i].total.toLocaleString() + "<br>"
+                            + "Deaths: " + response2[i].death.toLocaleString())
 
                     }
                 };
@@ -100,8 +103,8 @@ $(document).ready(function () {
                         resulting = ((positive / positiveNeg) * 100).toFixed(2)
 
                         $("#rightStatePosRate").html("Positivity Rate: " + ((positive / positiveNeg) * 100).toFixed(2) + "%")
-                        $("#state-card-right").html("Total cases: " + response2[i].total + "<br>"
-                            + "Deaths: " + response2[i].death)
+                        $("#state-card-right").html("Total cases: " + response2[i].total.toLocaleString() + "<br>"
+                            + "Deaths: " + response2[i].death.toLocaleString())
 
                     }
                 };
@@ -137,7 +140,7 @@ $(document).ready(function () {
     // Click listener to display states in card
     $("#states2").on("change", function (event) {
         var state = event.target.value
-        console.log(state, "right")
+        // console.log(state, "right")
         $("#rightStatePosRate").text("")
         $("#state-card-right").text("")
         $("#stImg2").removeAttr("class")
@@ -145,7 +148,7 @@ $(document).ready(function () {
     })
     $("#states1").on("change", function (event) {
         var state = event.target.value
-        console.log(state, "left")
+        // console.log(state, "left")
         $("#leftStatePosRate").text("")
         $("#state-card-left").text("")
         $("#stImg1").removeAttr("class")
@@ -164,20 +167,20 @@ $.ajax({
     method: "GET"
 }).then(function(response) {
 
-    console.log(response)
+    // console.log(response)
     var link1 = response.response.docs[0]
     var link2 = response.response.docs[1]
     var link3 = response.response.docs[2]
     var link4 = response.response.docs[3]
-    console.log(link1)
-    console.log(link2)
-    console.log(link3)
-    console.log(link4)
+    // console.log(link1)
+    // console.log(link2)
+    // console.log(link3)
+    // console.log(link4)
 
-    $('#link1').append("<a href=" + link1.web_url + ">" + link1.headline.main + "</a>");
-    $('#link1').append("<a href=" + link2.web_url + ">" + link2.headline.main + "</a>");
-    $('#link1').append("<a href=" + link3.web_url + ">" + link3.headline.main + "</a>");
-    $('#link1').append("<a href=" + link4.web_url + ">" + link4.headline.main + "</a>");
+    $('#link1').append("<a href=" + link1.web_url + " target='_blank'>" + link1.headline.main + "</a>");
+    $('#link1').append("<a href=" + link2.web_url + " target='_blank'>" + link2.headline.main + "</a>");
+    $('#link1').append("<a href=" + link3.web_url + " target='_blank'>" + link3.headline.main + "</a>");
+    $('#link1').append("<a href=" + link4.web_url + " target='_blank'>" + link4.headline.main + "</a>");
     
     // $('#link1').text(response.)
    
