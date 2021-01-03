@@ -1,14 +1,40 @@
 $(document).ready(function () {
 
     $(document).foundation();
-    // set variable for local storage
-    var stateWinLoss = JSON.parse(localStorage.getItem("stateWL")) || [];
+
 
     // https://corona.lmao.ninja/docs/#/COVID-19%3A%20Worldometers/get_v3_covid_19_countries
+    var history = JSON.parse(localStorage.getItem("gameHistory")) || [];
 
-    var queryURL = "https://disease.sh/v3/covid-19/all"
+    function saveScore(state, win, lose) {
+
+        var stateScore = history.filter(score => score.state === state)
+        if (stateScore.length === 0) {
+            var winLoses = { state: state, wins: win, loses: lose }
+            history.push(winLoses)
+        } else {
+            stateScore[0].wins += win
+            stateScore[0].loses += lose
+        }
+        localStorage.setItem("gameHistory", JSON.stringify(history))
+        history = JSON.parse(localStorage.getItem("gameHistory"))
+    }
+
+    function loadScore(state) {
+        var stateScore = history.filter(score => score.state === state)
+        if (stateScore.length === 0) {
+            var winLoses = { state: state, wins: 0, loses: 0 }
+            return winLoses
+        } else {
+            return stateScore[0]
+        }
+
+    }
+
+
+    var queryURL1 = "https://disease.sh/v3/covid-19/all"
     $.ajax({
-        url: queryURL,
+        url: queryURL1,
         method: "GET"
     }).then(function (response1) {
         console.log(response1)
@@ -60,17 +86,18 @@ $(document).ready(function () {
 
     //https://api.covidtracking.com
 
-    var queryURL = "https://api.covidtracking.com/v1/states/current.json"
+    var queryURL2 = "https://api.covidtracking.com/v1/states/current.json"
 
     $("#battle").on("click", function () {
-        
+
         $.ajax({
-            url: queryURL,
+            url: queryURL2,
             method: "GET"
         }).then(function (response2) {
             // console.log(response2)
             const userState1 = $("#states1").val()
             const userState2 = $("#states2").val()
+
             var result1 = parseFloat(getRating1(userState1))
             var result2 = parseFloat(getRating2(userState2))
             console.log(userState1)
@@ -81,14 +108,18 @@ $(document).ready(function () {
                 var resulting = 0
                 for (var i = 0; i < 56; i++) {
                     if (response2[i].state === state) {
+
                         var positive = (response2[i].positive)
                         var positiveNeg = (response2[i].posNeg)
                         resulting = ((positive / positiveNeg) * 100).toFixed(2)
 
 
                         $("#leftStatePosRate").html("Positivity Rate: " + ((positive / positiveNeg) * 100).toFixed(2) + "%")
-                        $("#state-card-left").html("Total cases: " + response2[i].total.toLocaleString() + "<br>"
-                            + "Deaths: " + response2[i].death.toLocaleString())
+                        var html = "Total cases: " + response2[i].total.toLocaleString() + "<br>"
+                            + "Deaths: " + response2[i].death.toLocaleString() + "<br>"
+
+                        $("#state-card-left").html(html)
+
 
                     }
                 };
@@ -98,41 +129,58 @@ $(document).ready(function () {
                 var resulting = 0
                 for (var i = 0; i < 56; i++) {
                     if (response2[i].state === state) {
+
                         var positive = (response2[i].positive)
                         var positiveNeg = (response2[i].posNeg)
                         resulting = ((positive / positiveNeg) * 100).toFixed(2)
 
                         $("#rightStatePosRate").html("Positivity Rate: " + ((positive / positiveNeg) * 100).toFixed(2) + "%")
-                        $("#state-card-right").html("Total cases: " + response2[i].total.toLocaleString() + "<br>"
-                            + "Deaths: " + response2[i].death.toLocaleString())
+                        var html = "Total cases: " + response2[i].total.toLocaleString() + "<br>"
+                            + "Deaths: " + response2[i].death.toLocaleString() + "<br>"
+
+                        $("#state-card-right").html(html)
 
                     }
                 };
                 return resulting
 
             }
-
             if (userState1 === userState2) {
                 $("#modal-text").text("Choose two DIFFERENT states...")
             } else if (result1 > result2) {
+                saveScore(userState1, 0, 1)
+                saveScore(userState2, 1, 0)
                 $("#modal-text").text(userState2 + " wins!");
                 $("#stImg2").attr("class", "colorize-blue")
                 $("#stImg1").attr("class", "colorize-pink")
             } else if (result1 < result2) {
+                saveScore(userState2, 0, 1)
+                saveScore(userState1, 1, 0)
                 $("#modal-text").text(userState1 + " wins!");
                 $("#stImg1").attr("class", "colorize-blue")
+
                 $("#stImg2").attr("class", "colorize-pink")
             }
             else {
                 $("#modal-text").text("It's a tie!");
             }
+
+
+            var scores1 = loadScore(userState1)
+            var html = "wins: " + scores1.wins + " loses: " + scores1.loses
+
+            $("#state-card-left").append(html)
+            var scores2 = loadScore(userState2)
+            var html = "wins: " + scores2.wins + " loses: " + scores2.loses
+
+            $("#state-card-right").append(html)
         });
     })
 
 
 
+    //Date display in the DOM
     var currentDate = moment().format('dddd, MMMM Do, YYYY');
-    // console.log(currentDate);
     $("#currentDate").text(currentDate)
 
 
@@ -154,18 +202,16 @@ $(document).ready(function () {
         $("#stImg1").removeAttr("class")
         $("#stImg1").attr({ "type": "image/svg", "src": "images/" + state + ".svg", "alt": state })
     })
-    {/* <img type="image/svg" src="" width="300" height="200"> */ }
-    // Math.floor(response[1].);
 
 })
 
 
 // Covid news links
-var queryURL2 = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=Covid&api-key=WbAAM3rxTCRiSJsmekEsFKXaDF8DceLA"
+var queryURL3 = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=Covid&api-key=WbAAM3rxTCRiSJsmekEsFKXaDF8DceLA"
 $.ajax({
-    url: queryURL2,
+    url: queryURL3,
     method: "GET"
-}).then(function(response) {
+}).then(function (response) {
 
     // console.log(response)
     var link1 = response.response.docs[0]
@@ -181,9 +227,9 @@ $.ajax({
     $('#link1').append("<a href=" + link2.web_url + " target='_blank'>" + link2.headline.main + "</a>");
     $('#link1').append("<a href=" + link3.web_url + " target='_blank'>" + link3.headline.main + "</a>");
     $('#link1').append("<a href=" + link4.web_url + " target='_blank'>" + link4.headline.main + "</a>");
-    
+
     // $('#link1').text(response.)
-   
-    
-    
+
+
+
 })
