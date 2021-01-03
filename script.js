@@ -10,11 +10,11 @@ $(document).ready(function () {
 
         var stateScore = history.filter(score => score.state === state)
         if (stateScore.length === 0) {
-            var winLoses = { state: state, wins: win, loses: lose }
-            history.push(winLoses)
+            var winLosses = { state: state, wins: win, losses: lose }
+            history.push(winLosses)
         } else {
             stateScore[0].wins += win
-            stateScore[0].loses += lose
+            stateScore[0].losses += lose
         }
         localStorage.setItem("gameHistory", JSON.stringify(history))
         history = JSON.parse(localStorage.getItem("gameHistory"))
@@ -23,8 +23,8 @@ $(document).ready(function () {
     function loadScore(state) {
         var stateScore = history.filter(score => score.state === state)
         if (stateScore.length === 0) {
-            var winLoses = { state: state, wins: 0, loses: 0 }
-            return winLoses
+            var winLosses = { state: state, wins: 0, losses: 0 }
+            return winLosses
         } else {
             return stateScore[0]
         }
@@ -167,11 +167,11 @@ $(document).ready(function () {
 
 
             var scores1 = loadScore(userState1)
-            var html = "wins: " + scores1.wins + " loses: " + scores1.loses
+            var html = "wins: " + scores1.wins + " losses: " + scores1.losses
 
             $("#state-card-left").append(html)
             var scores2 = loadScore(userState2)
-            var html = "wins: " + scores2.wins + " loses: " + scores2.loses
+            var html = "wins: " + scores2.wins + " losses: " + scores2.losses
 
             $("#state-card-right").append(html)
         });
