@@ -222,3 +222,23 @@ a:hover {
 #states2 {
   cursor: pointer;
 }
+
+/* Media Queries */
+@media screen and (max-width: 375px) {
+  h1 {
+    font-size: 27px;
+  }
+
+#currentDate,
+h3,
+h4
+ {
+    font-size: 18px;
+  }
+
+  .ticker-item1,
+.ticker-item2,
+.ticker-item3 {
+font-size: 13px;
+}
+}
