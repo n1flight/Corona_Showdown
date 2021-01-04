@@ -2,8 +2,6 @@ $(document).ready(function () {
 
     $(document).foundation();
 
-
-    // https://corona.lmao.ninja/docs/#/COVID-19%3A%20Worldometers/get_v3_covid_19_countries
     var history = JSON.parse(localStorage.getItem("gameHistory")) || [];
 
     function saveScore(state, win, lose) {
@@ -30,7 +28,6 @@ $(document).ready(function () {
         }
 
     }
-
 
     var queryURL1 = "https://disease.sh/v3/covid-19/all"
     $.ajax({
@@ -81,11 +78,6 @@ $(document).ready(function () {
 
     });
 
-
-
-
-    //https://api.covidtracking.com
-
     var queryURL2 = "https://api.covidtracking.com/v1/states/current.json"
 
     $("#battle").on("click", function () {
@@ -94,7 +86,6 @@ $(document).ready(function () {
             url: queryURL2,
             method: "GET"
         }).then(function (response2) {
-            // console.log(response2)
             const userState1 = $("#states1").val()
             const userState2 = $("#states2").val()
 
@@ -119,8 +110,6 @@ $(document).ready(function () {
                             + "Deaths: " + response2[i].death.toLocaleString() + "<br>"
 
                         $("#state-card-left").html(html)
-
-
                     }
                 };
                 return resulting
@@ -139,11 +128,9 @@ $(document).ready(function () {
                             + "Deaths: " + response2[i].death.toLocaleString() + "<br>"
 
                         $("#state-card-right").html(html)
-
                     }
                 };
                 return resulting
-
             }
             if (userState1 === userState2) {
                 $("#modal-text").text("Choose two DIFFERENT states...")
@@ -164,7 +151,6 @@ $(document).ready(function () {
             else {
                 $("#modal-text").text("It's a tie!");
             }
-
 
             var scores1 = loadScore(userState1)
             var html = "wins: " + scores1.wins + " losses: " + scores1.losses
