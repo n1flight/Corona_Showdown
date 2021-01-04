@@ -34,7 +34,6 @@ $(document).ready(function () {
         url: queryURL1,
         method: "GET"
     }).then(function (response1) {
-        console.log(response1)
         $(".ticker-item1").text("Total Cases: " + response1.cases.toLocaleString());
         $(".ticker-item-space").text("");
         $(".ticker-item-space").text("");
@@ -75,7 +74,6 @@ $(document).ready(function () {
         $(".ticker-item-space").text("");
         $(".ticker-item-space").text("");
         $(".ticker-item-space").text("");
-
     });
 
     var queryURL2 = "https://api.covidtracking.com/v1/states/current.json"
@@ -91,10 +89,6 @@ $(document).ready(function () {
 
             var result1 = parseFloat(getRating1(userState1))
             var result2 = parseFloat(getRating2(userState2))
-            console.log(userState1)
-            console.log(result1)
-            console.log(userState2)
-            console.log(result2)
             function getRating1(state) {
                 var resulting = 0
                 for (var i = 0; i < 56; i++) {
@@ -163,8 +157,6 @@ $(document).ready(function () {
         });
     })
 
-
-
     //Date display in the DOM
     var currentDate = moment().format('dddd, MMMM Do, YYYY');
     $("#currentDate").text(currentDate)
@@ -174,7 +166,6 @@ $(document).ready(function () {
     // Click listener to display states in card
     $("#states2").on("change", function (event) {
         var state = event.target.value
-        // console.log(state, "right")
         $("#rightStatePosRate").text("")
         $("#state-card-right").text("")
         $("#stImg2").removeAttr("class")
@@ -182,7 +173,6 @@ $(document).ready(function () {
     })
     $("#states1").on("change", function (event) {
         var state = event.target.value
-        // console.log(state, "left")
         $("#leftStatePosRate").text("")
         $("#state-card-left").text("")
         $("#stImg1").removeAttr("class")
@@ -191,29 +181,21 @@ $(document).ready(function () {
 
 })
 
-
-// Covid news links
 var queryURL3 = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=Covid&api-key=WbAAM3rxTCRiSJsmekEsFKXaDF8DceLA"
 $.ajax({
     url: queryURL3,
     method: "GET"
 }).then(function (response) {
 
-    // console.log(response)
+
     var link1 = response.response.docs[0]
     var link2 = response.response.docs[1]
     var link3 = response.response.docs[2]
     var link4 = response.response.docs[3]
-    // console.log(link1)
-    // console.log(link2)
-    // console.log(link3)
-    // console.log(link4)
 
     $('#link1').append("<a href=" + link1.web_url + " target='_blank'>" + link1.headline.main + "</a>");
     $('#link1').append("<a href=" + link2.web_url + " target='_blank'>" + link2.headline.main + "</a>");
     $('#link1').append("<a href=" + link3.web_url + " target='_blank'>" + link3.headline.main + "</a>");
     $('#link1').append("<a href=" + link4.web_url + " target='_blank'>" + link4.headline.main + "</a>");
-
-    // $('#link1').text(response.)
 
 })
