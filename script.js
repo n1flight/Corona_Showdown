@@ -216,6 +216,4 @@ $.ajax({
 
     // $('#link1').text(response.)
 
-
-
 })
