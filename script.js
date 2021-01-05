@@ -99,9 +99,9 @@ $(document).ready(function () {
                         resulting = ((positive / positiveNeg) * 100).toFixed(2)
 
 
-                        $("#leftStatePosRate").html("Positivity Rate: " + ((positive / positiveNeg) * 100).toFixed(2) + "%")
-                        var html = "Total cases: " + response2[i].total.toLocaleString() + "<br>"
-                            + "Deaths: " + response2[i].death.toLocaleString() + "<br>"
+                        $("#leftStatePosRate").html("Positivity Rate:  " + ((positive / positiveNeg) * 100).toFixed(2) + "%")
+                        var html = "Total cases : " + response2[i].total.toLocaleString() + "<br>"
+                            + "Deaths : " + response2[i].death.toLocaleString() + "<br>"
 
                         $("#state-card-left").html(html)
                     }
@@ -117,9 +117,9 @@ $(document).ready(function () {
                         var positiveNeg = (response2[i].posNeg)
                         resulting = ((positive / positiveNeg) * 100).toFixed(2)
 
-                        $("#rightStatePosRate").html("Positivity Rate: " + ((positive / positiveNeg) * 100).toFixed(2) + "%")
-                        var html = "Total cases: " + response2[i].total.toLocaleString() + "<br>"
-                            + "Deaths: " + response2[i].death.toLocaleString() + "<br>"
+                        $("#rightStatePosRate").html("Positivity Rate : " + ((positive / positiveNeg) * 100).toFixed(2) + "%")
+                        var html = "Total cases : " + response2[i].total.toLocaleString() + "<br>"
+                            + "Deaths : " + response2[i].death.toLocaleString() + "<br>"
 
                         $("#state-card-right").html(html)
                     }
@@ -147,11 +147,11 @@ $(document).ready(function () {
             }
 
             var scores1 = loadScore(userState1)
-            var html = "wins: " + scores1.wins + " losses: " + scores1.losses
+            var html = "Wins : " + scores1.wins + " Losses : " + scores1.losses
 
             $("#state-card-left").append(html)
             var scores2 = loadScore(userState2)
-            var html = "wins: " + scores2.wins + " losses: " + scores2.losses
+            var html = "Wins : " + scores2.wins + " Losses : " + scores2.losses
 
             $("#state-card-right").append(html)
         });

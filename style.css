@@ -195,11 +195,7 @@ h1{
   text-decoration: none;
 }
 
-footer {
-  color: white;
-  padding: 10px;
-  margin: 0;
-}
+
 
 li a {
   background:  rgb(22, 9, 9);
@@ -236,9 +232,15 @@ h4
     font-size: 18px;
   }
 
-  .ticker-item1,
+.ticker-item1,
 .ticker-item2,
 .ticker-item3 {
 font-size: 13px;
 }
+}
+
+footer {
+  color: white;
+  padding: 10px;
+  margin: 0;
 }

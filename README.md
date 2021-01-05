@@ -62,7 +62,7 @@ This site was made using:
 ## Link to deployed site
 ---
 
-[Corona Showdown](https://n1flight.github.io/Project_1_multiple-api-s/.)
+[Corona Showdown](https://n1flight.github.io/Corona_Showdown/)
 
 This site was built using GitHub Pages.
 
