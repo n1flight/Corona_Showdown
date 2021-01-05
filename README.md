@@ -72,9 +72,16 @@ This site was built using GitHub Pages.
 * Aika Kuo
 * Nader Salem
 * Rachel Thompson
- 
 
-## License
+## Credits
+---
+Ticker code adapted from W.S. Toh / Tips & Tutorials - HTML & CSS example: https://code-boxx.com/html-css-news-ticker-horizontal-vertical/ retrieved December 23, 2020
+
+States background colors adapted from https://css-tricks.com/solved-with-css-colorizing-svg-backgrounds/ retrieved December 22,2020
+
+US States dropdown code adapted from https://codepen.io/carlnunes/pen/yhiEo retrieved December 17, 2020
+
+ ## License
 ---
 Licensed under the [MIT License](LICENSE)
 
