@@ -98,9 +98,9 @@ $(document).ready(function () {
                         var positiveNeg = (response2[i].posNeg)
                         resulting = ((positive / positiveNeg) * 100).toFixed(2)
 
-
+                        console.log(response2);
                         $("#leftStatePosRate").html("Positivity Rate:  " + ((positive / positiveNeg) * 100).toFixed(2) + "%")
-                        var html = "Total cases : " + response2[i].total.toLocaleString() + "<br>"
+                        var html = "Total cases : " + response2[i].positive.toLocaleString() + "<br>"
                             + "Deaths : " + response2[i].death.toLocaleString() + "<br>"
 
                         $("#state-card-left").html(html)
@@ -118,7 +118,7 @@ $(document).ready(function () {
                         resulting = ((positive / positiveNeg) * 100).toFixed(2)
 
                         $("#rightStatePosRate").html("Positivity Rate : " + ((positive / positiveNeg) * 100).toFixed(2) + "%")
-                        var html = "Total cases : " + response2[i].total.toLocaleString() + "<br>"
+                        var html = "Total cases : " + response2[i].positive.toLocaleString() + "<br>"
                             + "Deaths : " + response2[i].death.toLocaleString() + "<br>"
 
                         $("#state-card-right").html(html)
