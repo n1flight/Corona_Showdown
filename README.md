@@ -62,7 +62,7 @@ This site was made using:
 ## Link to deployed site
 ---
 
-[Corona Showdown](https://n1flight.github.io/Project_1_multiple-api-s/.)
+[Corona Showdown](https://n1flight.github.io/Corona_Showdown/)
 
 This site was built using GitHub Pages.
 
@@ -72,16 +72,9 @@ This site was built using GitHub Pages.
 * Aika Kuo
 * Nader Salem
 * Rachel Thompson
+ 
 
-## Credits
----
-Ticker code adapted from W.S. Toh / Tips & Tutorials - HTML & CSS example: https://code-boxx.com/html-css-news-ticker-horizontal-vertical/ retrieved December 23, 2020
-
-States background colors adapted from https://css-tricks.com/solved-with-css-colorizing-svg-backgrounds/ retrieved December 22,2020
-
-US States dropdown code adapted from https://codepen.io/carlnunes/pen/yhiEo retrieved December 17, 2020
-
- ## License
+## License
 ---
 Licensed under the [MIT License](LICENSE)
 
